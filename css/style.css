@@ -3,10 +3,6 @@
     box-sizing: border-box;
 }
 
-.colored {
-    background: black;
-}
-
 #grid-container {
     display: grid;
     grid-template-rows: repeat(16, 32px);

@@ -1,8 +1,9 @@
 const gridContainer = document.querySelector("#grid-container");
-const gridGenerator = document.querySelector("#generate-grid");
+const gridGeneratorButton = document.querySelector("#generate-grid");
+const gridClearButton = document.querySelector('#clear-grid');
 
 function generateGrid(dimension) {
-    if(isNaN(dimension) || dimension <= 0) { //dimension != number
+    if(isNaN(dimension) || dimension <= 0) {
         generateGrid(16);
         return;
     } else {
@@ -10,8 +11,8 @@ function generateGrid(dimension) {
         let numberOfGridElements = dimension * dimension;
         
         gridContainer.setAttribute('style',
-        `grid-template-rows: repeat(${dimension}, ${512 / dimension}px);
-         grid-template-columns: repeat(${dimension}, ${512 / dimension}px);`);
+            `grid-template-rows: repeat(${dimension}, ${512 / dimension}px);
+             grid-template-columns: repeat(${dimension}, ${512 / dimension}px);`);
 
         for(let i = 0; i < numberOfGridElements; i++) {
             gridElement = document.createElement("div");
@@ -20,7 +21,8 @@ function generateGrid(dimension) {
                 `width: ${512 / dimension}px;
                  height: ${512 / dimension}px;`);
             gridElement.addEventListener("mouseover", (e) => {
-                e.target.classList.add("colored");
+                e.target.setAttribute('style',
+                    `background-color: black;`);
             });
             gridContainer.appendChild(gridElement);
         }
@@ -33,13 +35,23 @@ function eraseGrid() {
         gridElement.remove();
     });
 }
+
+function clearGrid() {
+    let grid = document.querySelectorAll(".grid-element");
+    grid.forEach((gridElement) => {
+        gridElement.setAttribute('style',
+            `background-color: white;`);
+    });
+}
+
 generateGrid(16);
 
-//unfulfilled functionality: gridGenerator must reset grid first by removing elements, and then add new gridElements with refactored function (see above comment)
-gridGenerator.addEventListener("click", () => {
+gridGeneratorButton.addEventListener("click", () => {
     let gridDimension = prompt("Enter the new grid dimension (default is 16)");
     
     eraseGrid();
     generateGrid(gridDimension);
     
 });
+
+gridClearButton.addEventListener("click", clearGrid);
