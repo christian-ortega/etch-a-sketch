@@ -1,8 +1,9 @@
 const gridContainer = document.querySelector("#grid-container");
 const gridGeneratorButton = document.querySelector("#generate-grid");
 const gridClearButton = document.querySelector('#clear-grid');
-const fillOptions = document.querySelectorAll("input[type='radio']");
-const colorSelection = document.querySelector("#color-selection");
+const hideBorderCheckbox = document.querySelector('#hide-border');
+const fillOptions = document.querySelectorAll("input[type='radio'][name='fill']");
+const colorSelection = document.querySelector('#color-selection');
 
 let currentFillOption = "default";
 
@@ -42,46 +43,41 @@ function eraseGrid() {
 function clearGrid() {
     let grid = document.querySelectorAll(".grid-element");
     grid.forEach((gridElement) => {
-        gridElement.setAttribute('style',
-            `background-color: white;
-             opacity: 1;`);
+        gridElement.style.backgroundColor = "white";
+        gridElement.style.opacity = "1";
     });
 }
 
 function fillColor(e) {
     if(currentFillOption != "no-color") {
         if(currentFillOption == "default") {
-            e.target.setAttribute('style',
-                `background-color: black;
-                 opacity: 1;`);
+            e.target.style.backgroundColor = "black";
+            e.target.opacity = "1";
         }
-        else if(currentFillOption == "single-color") {                        
-            e.target.setAttribute('style',
-                `background-color: ${colorSelection.value};
-                 opacity: 1;`);
+        else if(currentFillOption == "single-color") {
+            e.target.style.backgroundColor = `${colorSelection.value}`;
+            e.target.style.opacity = "1";
         }
         else if(currentFillOption == "rainbow") {
             let color1 = Math.floor(Math.random() * 256);
             let color2 = Math.floor(Math.random() * 256);
             let color3 = Math.floor(Math.random() * 256);
-    
-            e.target.setAttribute('style',
-                `background-color: rgb(${color1}, ${color2}, ${color3});
-                 opacity: 1;`);
+
+            e.target.style.backgroundColor = `rgb(${color1}, ${color2}, ${color3})`;
+            e.target.style.opacity = "1";
         }
         else if(currentFillOption == "grayscale") {
             if(!(e.target.style.backgroundColor == "black" && e.target.style.opacity == 1)) {
                 if(e.target.style.backgroundColor != "black" &&
                         e.target.style.backgroundColor != "#000000" && 
                         e.target.style.backgroundColor != "rgb(0, 0, 0)") {
-                    e.target.setAttribute('style',
-                        `background-color: black;
-                         opacity: 0.1;`);
+
+                    e.target.style.backgroundColor = "black";
+                    e.target.style.opacity = "0.1";
                 }
                 else {
-                    e.target.setAttribute('style',
-                        `background-color: black;
-                         opacity: ${Number(e.target.style.opacity) + 0.1}`);
+                    e.target.style.backgroundColor = "black";
+                    e.target.style.opacity = `${Number(e.target.style.opacity) + 0.1}`;
                 }
             }
         }
@@ -104,4 +100,18 @@ fillOptions.forEach((option) => {
     option.addEventListener("click", () => {
         currentFillOption = option.id;
     });
+});
+
+hideBorderCheckbox.addEventListener("click", (e) => {
+    const gridElements = document.querySelectorAll('.grid-element');
+    if(e.target.checked) {
+        gridElements.forEach((element) => {
+            element.style.borderStyle = "hidden";
+        });
+    }
+    else {
+        gridElements.forEach((element) => {
+            element.style.borderStyle = "solid";
+        });
+    }
 });
