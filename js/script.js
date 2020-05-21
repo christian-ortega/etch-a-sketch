@@ -70,7 +70,6 @@ function fillColor(e) {
                  opacity: 1;`);
         }
         else if(currentFillOption == "grayscale") {
-            // Issue: Opacity applies to border, weakening border strength relative to other borders
             if(!(e.target.style.backgroundColor == "black" && e.target.style.opacity == 1)) {
                 if(e.target.style.backgroundColor != "black" &&
                         e.target.style.backgroundColor != "#000000" && 
