@@ -26,7 +26,8 @@ function generateGrid(dimension) {
                 `width: ${512 / dimension}px;
                  height: ${512 / dimension}px;
                  background-color: white;
-                 opacity: 1;`);
+                 opacity: 1;
+                 border-style: ${(hideBorderCheckbox.checked ? "hidden": "solid")}`);
             gridElement.addEventListener("mouseover", fillColor);
             gridContainer.appendChild(gridElement);
         }
