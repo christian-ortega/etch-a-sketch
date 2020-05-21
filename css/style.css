@@ -1,5 +1,5 @@
 .grid-element {
-    border: 0.5px solid black;
+    border: 0.5px solid black; /*rgb(85,85,85)*/
     box-sizing: border-box;
 }
 
