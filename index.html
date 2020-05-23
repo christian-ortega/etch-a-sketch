@@ -6,42 +6,56 @@
     </head>
 
     <body>
-        <button id="generate-grid">Generate New Grid</button>
-        <button id=clear-grid>Clear Grid</button>
-        <label for="hide-border">
-            <input type="checkbox" id="hide-border">Hide Cell Border
-        </label>
+        <h1>Etch-A-Sketch</h1>
 
-        <div>
-            <label for="no-color">
-                <input type="radio" id="no-color" name="fill">No Color
-            </label>
+        <div id="content-container">
+            <div id="ui-container">
+                <div id="buttons-container">
+                    <button id="generate-grid">Create New Grid</button>
+                    <button id=clear-grid>Clear Grid</button>
+                    <label for="hide-border">
+                        <input type="checkbox" id="hide-border">Hide Cell Border
+                    </label>
+                </div>
+        
+                <div id="fills-container">
+                    <h2>Fill options:</h2>
 
-            <label for="default">
-                <input type="radio" id="default" name="fill" checked="checked">Black (Default)
-            </label>
-
-            <label for="single-color">
-                <input type="radio" id="single-color" name="fill">Single Color
-            </label>
-
-            <label for="color-selection">
-                <input type="color" id="color-selection">
-            </label>
-
-            <label for="rainbow">
-                <input type="radio" id="rainbow" name="fill">Rainbow
-            </label>
-
-            <label for="grayscale">
-                <input type="radio" id="grayscale" name="fill">Grayscale
-            </label>
+                    <label for="no-color">
+                        <input type="radio" id="no-color" name="fill">No Color
+                    </label>
+        
+                    <label for="default">
+                        <input type="radio" id="default" name="fill" checked="checked">Black (Default)
+                    </label>
+        
+                    <div id="color-selection-container">
+                        <label id="single-color-radio-label" for="single-color">
+                            <input type="radio" id="single-color" name="fill">Single Color
+                        </label>
+            
+                        <label for="color-selection">
+                            <input type="color" id="color-selection">
+                        </label>
+                    </div>
+        
+                    <label for="rainbow">
+                        <input type="radio" id="rainbow" name="fill">Rainbow
+                    </label>
+        
+                    <label for="grayscale">
+                        <input type="radio" id="grayscale" name="fill">Grayscale
+                    </label>
+                </div>
+            </div>
+            
+    
+    
+            <div id="grid-container">
+                <!--script.js will populate this div with the appropriate grid elements-->
+            </div>
         </div>
-
-
-        <div id="grid-container">
-            <!--script.js will populate this div with the appropriate grid elements-->
-        </div>
+        
     </body>
 
     <script src="js/script.js"></script>

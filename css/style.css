@@ -1,10 +1,81 @@
+html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+button {
+    height: 30px;
+    width: 135px;
+
+    align-self: center;
+}
+
 .grid-element {
     border: 0.5px solid rgb(85, 85, 85); /**/
     box-sizing: border-box;
+}
+
+#content-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#ui-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    margin-right: 10px;
+}
+
+#buttons-container {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#buttons-container > * {
+    margin-bottom: 10px;
+}
+
+#fills-container {
+    height: 70%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#fills-container > * {
+    margin-bottom: 10px;
+    height: 28px;
+}
+
+#color-selection-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 #grid-container {
     display: grid;
     grid-template-rows: repeat(16, 32px);
     grid-template-columns: repeat(16, 32px);
+}
+
+#single-color-radio-label {
+    margin-right: 6px;
 }
