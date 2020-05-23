@@ -6,10 +6,19 @@ html {
     font-family: 'Times New Roman', Times, serif;
 }
 
+@media (max-width: 681px) {
+    html {
+        justify-content: flex-start;
+    }
+}
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    margin-right: -10px;
+    padding-right: 10px;
 }
 
 h2 {
@@ -34,6 +43,7 @@ button {
 }
 
 #ui-container {
+    width: 159px;
 
     display: flex;
     flex-direction: column;
@@ -72,6 +82,8 @@ button {
 
 #grid-container {
     display: grid;
+    width: 512px;
+    height: 512px;
     grid-template-rows: repeat(16, 32px);
     grid-template-columns: repeat(16, 32px);
 }
